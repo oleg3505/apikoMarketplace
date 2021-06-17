@@ -8,7 +8,8 @@ import {
   RegisterScreen,
 } from '../screens';
 import { NavigationContainer } from '@react-navigation/native';
-import GuestModeScreen from '../screens/GuestMode/GuestModeScreen';
+
+import { screens } from './screens';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,7 @@ export function InboxStackNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Inbox"
+        name={screens.Inbox}
         component={InboxScreen}
         options={{
           headerTitleAlign: 'center',

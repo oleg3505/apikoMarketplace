@@ -7,14 +7,16 @@ import {
   LoginScreen,
   MainScreen,
   RegisterScreen,
+  ProductScreen,
 } from '../screens';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import GuestModeScreen from '../screens/GuestMode/GuestModeScreen';
+
 import s from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import Touchable from '../components/Touchable/Touchable';
 import { Text, View, TextInput } from 'react-native';
 import { SearchInput } from '../components';
+import { screens } from './screens';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +29,7 @@ export function BrovseStackNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Brovse"
+        name={screens.Brovse}
         component={BrovseScreen}
         options={{
           headerLeft: false,
@@ -37,10 +39,21 @@ export function BrovseStackNavigation() {
       />
 
       <Stack.Screen
-        name="Filter"
+        name={screens.Filter}
         component={FilterScreen}
         options={{
           headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name={screens.Product}
+        component={ProductScreen}
+        options={{
+          // headerLeft: false,
+          headerTitleAlign: 'center',
+          headerTitle: false,
+          // headerShown: false,
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>

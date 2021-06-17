@@ -8,8 +8,9 @@ import {
   SavedScreen,
 } from '../screens';
 import { NavigationContainer } from '@react-navigation/native';
-import GuestModeScreen from '../screens/GuestMode/GuestModeScreen';
+
 import { SearchInput } from '../components';
+import { screens } from './screens';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,7 @@ export function SavedStackNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Saved"
+        name={screens.Saved}
         component={SavedScreen}
         options={{
           headerLeft: false,

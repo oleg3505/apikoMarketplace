@@ -4,18 +4,19 @@ import { useState } from 'react';
 import s from './styles';
 import { AuthBottom, Touchable } from '../../components';
 import { useNavigation } from '@react-navigation/native';
+import { screens } from '../../navigation/screens';
 
 function MainScreen() {
   const nav = useNavigation();
 
   function onPressRegister() {
-    nav.navigate('Register');
+    nav.navigate(screens.Register);
   }
   function onPressLogin() {
-    nav.navigate('Login');
+    nav.navigate(screens.Login);
   }
   function onGuestMode() {
-    nav.navigate('GuestMode');
+    nav.navigate(screens.GuestMode);
   }
 
   return (

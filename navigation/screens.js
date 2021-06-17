@@ -1,0 +1,15 @@
+export const screens = {
+  AddPost: 'AddPost',
+  Main: 'Main',
+  Login: 'Login',
+  Register: 'Register',
+  GuestMode: 'GuestMode',
+  Brovse: 'Brovse',
+  Filter: 'Filter',
+  Inbox: 'Inbox',
+  Profile: 'Profile',
+  Saved: 'Saved',
+  Product: 'Product',
+  Settings: 'Settings',
+  WebView: 'WebView',
+};

@@ -1,16 +1,16 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../styles';
 
 const styles = StyleSheet.create({
   active: {
-    color: '#349A89',
+    color: colors.primary,
   },
 
   inactive: {
-    color: '#A0A4B1',
+    color: colors.grey,
   },
 
   addIcon: {
-    backgroundColor: 'rgba(0, 0, 0, 0)',
     padding: 10,
     borderRadius: 28,
   },

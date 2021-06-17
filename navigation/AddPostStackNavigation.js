@@ -7,21 +7,22 @@ import {
   RegisterScreen,
 } from '../screens';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import GuestModeScreen from '../screens/GuestMode/GuestModeScreen';
+
 import { Ionicons } from '@expo/vector-icons';
 import Touchable from '../components/Touchable/Touchable';
+import { screens } from './screens';
 
 const Stack = createStackNavigator();
 export function AddPostStackNavigation() {
   const nav = useNavigation();
   function closeAddPost() {
-    nav.navigate('Brovse');
+    nav.navigate(screens.Brovse);
   }
 
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="AddPost"
+        name={screens.AddPost}
         component={AddPostScreen}
         options={{
           headerLeft: () => (

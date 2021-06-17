@@ -6,17 +6,21 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from 'react-native';
 import { useState } from 'react';
 import s from './styles';
 import { AuthBottom } from '../../components';
 import { useNavigation } from '@react-navigation/native';
+import Api from '../../api';
+import * as SecureStore from 'expo-secure-store';
+import { screens } from '../../navigation/screens';
 
 function RegisterScreen() {
   const nav = useNavigation();
 
   function onPressNavButton() {
-    nav.navigate('Login');
+    nav.navigate(screens.Login);
   }
 
   const [email, setEmail] = useState('');
@@ -31,8 +35,24 @@ function RegisterScreen() {
   function onChangeRepeatPassword(val) {
     setRepeatPassword(val);
   }
+
+  async function onPressRegister() {
+    if (password === repeatPassword) {
+      try {
+        await store.auth.register.run({ email, password });
+        if (await SecureStore.getItemAsync('__token')) {
+          nav.navigate(screens.GuestMode);
+        }
+      } catch (err) {
+        console.log('ERROR', err);
+      }
+    } else {
+      alert('passwords are different');
+    }
+  }
+
   return (
-    <View style={s.container}>
+    <ScrollView contentContainerStyle={s.container}>
       <View style={s.inputsContainer}>
         <View style={s.emailBlock}>
           <Text style={s.label}>Email</Text>
@@ -75,8 +95,9 @@ function RegisterScreen() {
         account="Have an account?"
         navButton="LOGIN"
         submitButton="Register"
+        onPressSubmit={onPressRegister}
       />
-    </View>
+    </ScrollView>
   );
 }
 

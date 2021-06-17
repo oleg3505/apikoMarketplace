@@ -1,10 +1,10 @@
 export { default as LoginScreen } from './Login/LoginScreen';
 export { default as RegisterScreen } from './Register/RegisterScreen';
 export { default as MainScreen } from './Main/MainScreen';
-export { default as GuestModeScreen } from './GuestMode/GuestModeScreen';
 export { default as SavedScreen } from './Saved/SavedScreen';
 export { default as ProfileScreen } from './Profile/ProfileScreen';
 export { default as BrovseScreen } from './Brovse/BrovseScreen';
 export { default as InboxScreen } from './Inbox/InboxScreen';
 export { default as AddPostScreen } from './AddPost/AddPostScreen';
 export { default as FilterScreen } from './FilterScreen/FilterScreen';
+export { default as ProductScreen } from './Product/ProductScreen';

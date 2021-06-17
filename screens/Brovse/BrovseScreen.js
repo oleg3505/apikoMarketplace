@@ -6,18 +6,45 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
+  FlatList,
+  Image,
 } from 'react-native';
 import { useState } from 'react';
 import s from './styles';
-import { AuthBottom, Touchable } from '../../components';
+import { AuthBottom, ProductList, Touchable } from '../../components';
 import { useNavigation } from '@react-navigation/native';
+import { Products } from '../../components/Products/Products';
+
+import { useStore } from '../../stores/CreateStore';
+import { useEffect } from 'react';
+import { observer } from 'mobx-react';
+import ProductsList from '../../components/ProductList/ProductsList';
 
 function BrovseScreen() {
+  const store = useStore();
+  useEffect(() => {
+    store.latestProducts.fetchLatest.run();
+  }, []);
+
   return (
-    <ScrollView styles={s.mainContainer}>
-      <Text>Brovse Screen</Text>
-    </ScrollView>
+    // <View>
+    //   <ProductsList store={store.latestProducts.products} />
+    // </View>
+    <View style={s.mainContainer}>
+      <FlatList
+        style={[s.content, { flex: 1 }]}
+        contentContainerStyle={{ flexGrow: 1 }}
+        renderItem={({ item }) => <Products item={item} />}
+        numColumns={2}
+        refreshing={store.latestProducts.fetchLatest.isLoading}
+        onRefresh={() => store.latestProducts.fetchLatest.run()}
+        keyExtractor={(item) => item.id}
+        onEndReached={() => store.latestProducts.fetchMore.run()}
+        onEndReachedThreshold={0.3}
+        data={store.latestProducts.products}
+      />
+    </View>
   );
 }
 
-export default BrovseScreen;
+export default observer(BrovseScreen);

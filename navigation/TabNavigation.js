@@ -19,13 +19,15 @@ import { SavedStackNavigation } from './SavedStackNavigation';
 import { BrovseStackNavigation } from './BrovseStackNavigation';
 import { InboxStackNavigation } from './InboxStackNavigation';
 import { ProfileStackNavigation } from './ProfileStackNavigation';
+import { colors } from '../styles';
+import { screens } from './screens';
 
 const Tab = createBottomTabNavigator();
 export default function TabNavigation() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Brovse"
+        name={screens.Brovse}
         options={{
           tabBarLabel: (props) => (
             <Text style={[props.focused ? s.active : s.inactive]}> Brovse</Text>
@@ -34,14 +36,14 @@ export default function TabNavigation() {
             <AntDesign
               name="search1"
               size={24}
-              color={props.focused ? '#349A89' : '#A0A4B1'}
+              color={props.focused ? colors.primary : colors.grey}
             />
           ),
         }}
         component={BrovseStackNavigation}
       />
       <Tab.Screen
-        name="Saved"
+        name={screens.Saved}
         options={{
           tabBarLabel: (props) => (
             <Text style={[props.focused ? s.active : s.inactive]}> Saved</Text>
@@ -50,16 +52,15 @@ export default function TabNavigation() {
             <Ionicons
               name="ios-bookmark-sharp"
               size={24}
-              color={props.focused ? '#349A89' : '#A0A4B1'}
+              color={props.focused ? colors.primary : colors.grey}
             />
           ),
         }}
         component={SavedStackNavigation}
       />
       <Tab.Screen
-        name="AddPost"
+        name={screens.AddPost}
         options={{
-          headerLeft: <Ionicons name="person" size={24} color="black" />,
           tabBarLabel: (props) => (
             <Text style={[props.focused ? s.active : s.inactive]}> </Text>
           ),
@@ -68,14 +69,14 @@ export default function TabNavigation() {
               style={s.addIcon}
               name="pluscircle"
               size={48}
-              color="#349A89"
+              color={colors.primary}
             />
           ),
         }}
         component={AddPostStackNavigation}
       />
       <Tab.Screen
-        name="Inbox"
+        name={screens.Inbox}
         options={{
           tabBarLabel: (props) => (
             <Text style={[props.focused ? s.active : s.inactive]}> Inbox </Text>
@@ -84,14 +85,14 @@ export default function TabNavigation() {
             <MaterialIcons
               name="inbox"
               size={24}
-              color={props.focused ? '#349A89' : '#A0A4B1'}
+              color={props.focused ? colors.primary : colors.grey}
             />
           ),
         }}
         component={InboxStackNavigation}
       />
       <Tab.Screen
-        name="Profile"
+        name={screens.Profile}
         options={{
           tabBarLabel: (props) => (
             <Text style={[props.focused ? s.active : s.inactive]}>
@@ -103,7 +104,7 @@ export default function TabNavigation() {
             <Ionicons
               name="person"
               size={24}
-              color={props.focused ? '#349A89' : '#A0A4B1'}
+              color={props.focused ? colors.primary : colors.grey}
             />
           ),
         }}

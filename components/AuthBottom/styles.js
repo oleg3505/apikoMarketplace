@@ -1,24 +1,25 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
   bottomBlock: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     borderTopWidth: 1,
-    borderTopColor: 'grey',
-    height: 30,
+    borderTopColor: colors.grey,
     paddingHorizontal: 10,
     alignItems: 'center',
   },
   registerButton: {
     padding: 5,
-    backgroundColor: '#349A89',
+    backgroundColor: colors.primary,
 
     alignItems: 'center',
   },
   registerContainer: {
     flex: 1,
+
     paddingHorizontal: 5,
     // height: 30,
 
@@ -26,15 +27,17 @@ const styles = StyleSheet.create({
   },
   registerText: {
     justifyContent: 'center',
-    color: '#349A89',
+    color: colors.primary,
     // fontWeight; '900'
   },
 
   loginButton: {
     padding: 5,
-    backgroundColor: '#349A89',
+    backgroundColor: colors.primary,
     borderRadius: 20,
     alignItems: 'center',
+    height: 40,
+    justifyContent: 'center',
   },
   loginContainer: {
     flex: 1,

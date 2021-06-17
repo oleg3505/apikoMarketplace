@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
 import { useState } from 'react';
+import { screens } from '../../navigation/screens';
 
 const SearchInput = ({
   onPressNavButton,
@@ -16,7 +17,7 @@ const SearchInput = ({
 }) => {
   const nav = useNavigation();
   function openFilter() {
-    nav.navigate('Filter');
+    nav.navigate(screens.Filter);
   }
 
   const [searchValue, setSearchValue] = useState('');

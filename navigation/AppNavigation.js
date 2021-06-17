@@ -2,10 +2,11 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LoginScreen, MainScreen, RegisterScreen } from '../screens';
 import { NavigationContainer } from '@react-navigation/native';
-import GuestModeScreen from '../screens/GuestMode/GuestModeScreen';
+
 import TabNavigation from './TabNavigation';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { screens } from './screens';
 
 const Stack = createStackNavigator();
 
@@ -14,28 +15,28 @@ export function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="MainScreen"
+          name={screens.Main}
           component={MainScreen}
           options={{
             headerTitleAlign: 'center',
           }}
         />
         <Stack.Screen
-          name="Login"
+          name={screens.Login}
           component={LoginScreen}
           options={{
             headerTitleAlign: 'center',
           }}
         />
         <Stack.Screen
-          name="Register"
+          name={screens.Register}
           component={RegisterScreen}
           options={{
             headerTitleAlign: 'center',
           }}
         />
         <Stack.Screen
-          name="GuestMode"
+          name={screens.GuestMode}
           component={TabNavigation}
           options={{
             headerShown: false,

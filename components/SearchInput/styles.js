@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -8,10 +9,9 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#D6D6D6',
-
+    backgroundColor: colors.greyLigth,
     borderWidth: 1,
-    borderColor: '#A0A4B1',
+    borderColor: colors.borderGrey,
     minWidth: '90%',
     borderRadius: 5,
     height: '120%',

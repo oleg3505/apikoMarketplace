@@ -1,19 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
   emailInput: {
     borderRadius: 5,
     borderWidth: 2,
-    borderColor: '#349A89',
+    borderColor: colors.primary,
     height: 44,
     justifyContent: 'center',
     paddingHorizontal: 16,
   },
   inputsContainer: {
-    minHeight: '90%',
+    minHeight: '87%',
   },
   mainContainer: {
-    flex: 1,
+    flexGrow: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
   },
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   passwordInput: {
     borderRadius: 5,
     borderWidth: 2,
-    borderColor: '#349A89',
+    borderColor: colors.primary,
     height: 44,
     justifyContent: 'center',
     paddingHorizontal: 16,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     // top: -10,
     // backgroundColor: 'white',
     paddingHorizontal: 8,
-    color: '#349A89',
+    color: colors.primary,
   },
 
   forgotPasswardBlock: {

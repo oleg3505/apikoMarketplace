@@ -16,10 +16,16 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { colors } from '../../styles';
 import { Entypo } from '@expo/vector-icons';
 import { screens } from '../../navigation/screens';
+import { useStore } from '../../stores/CreateStore';
+import { observer } from 'mobx-react';
 
 function ProfileScreen() {
   const nav = useNavigation();
   function onPressSettings() {
+    nav.navigate(screens.Settings);
+  }
+  const { viewer } = useStore();
+  if (!viewer.isLoggedIn) {
     nav.navigate(screens.Settings);
   }
 
@@ -34,4 +40,4 @@ function ProfileScreen() {
   );
 }
 
-export default ProfileScreen;
+export default observer(ProfileScreen);

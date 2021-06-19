@@ -4,18 +4,19 @@ import { UserModel } from './UserModel';
 export const ViewerStore = types
   .model('ViewerStore', {
     user: types.maybe(types.safeReference(UserModel)),
-    userModel: types.maybe(UserModel),
+    userModel: types.maybeNull(UserModel),
   })
   .actions((store) => ({
     setViewer(user) {
       store.userModel = user;
       store.user = user.id;
-      console.log({ store });
+    },
+    logOut() {
+      store.userModel = null;
     },
   }))
   .views((store) => ({
     get isLoggedIn() {
-      console.log(store);
-      return !!store.user;
+      return !!store.userModel;
     },
   }));

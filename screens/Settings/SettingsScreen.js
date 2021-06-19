@@ -7,6 +7,7 @@ import {
   Alert,
   Image,
   Linking,
+  ScrollView,
 } from 'react-native';
 // import { useState } from 'react';
 import s from './styles';
@@ -18,6 +19,9 @@ import { colors } from '../../styles';
 
 import { screens } from '../../navigation/screens';
 import { useCallback } from 'react';
+import { useStore } from '../../stores/CreateStore';
+import NotLogined from '../../components/NotLogined/NotLogined';
+import { observer } from 'mobx-react';
 
 function SettingsScreen() {
   const nav = useNavigation();
@@ -35,11 +39,36 @@ function SettingsScreen() {
       Alert.alert(`Don't know how to open this URL: ${supportedURL}`);
     }
   }, [supportedURL]);
+  const { viewer } = useStore();
 
   function onPressLogOut() {
+    viewer.logOut();
     nav.navigate(screens.Main);
   }
 
+  if (!viewer.isLoggedIn) {
+    return (
+      <View style={s.mainContainer}>
+        <View style={s.imgContainer}>
+          <Image
+            style={{ height: 120, width: 300 }}
+            source={require('../../assets/splash.png')}
+          />
+        </View>
+        <Touchable onPress={onPressPrivacy} style={s.container}>
+          <Text style={s.containerText}>Privacy Policy</Text>
+          <AntDesign name="right" size={24} color={colors.borderGrey} />
+        </Touchable>
+
+        <Touchable onPress={onPressTerms} style={s.container}>
+          <Text style={s.containerText}>Terms & Conditions</Text>
+          <AntDesign name="right" size={24} color={colors.borderGrey} />
+        </Touchable>
+
+        <NotLogined text="Login to view your profile" />
+      </View>
+    );
+  }
   return (
     <View style={s.mainContainer}>
       <View style={s.imgContainer}>
@@ -71,4 +100,4 @@ function SettingsScreen() {
   );
 }
 
-export default SettingsScreen;
+export default observer(SettingsScreen);

@@ -5,6 +5,7 @@ import s from './styles';
 import { AuthBottom, Touchable } from '../../components';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../../navigation/screens';
+import { useStore } from '../../stores/CreateStore';
 
 function MainScreen() {
   const nav = useNavigation();
@@ -16,6 +17,11 @@ function MainScreen() {
     nav.navigate(screens.Login);
   }
   function onGuestMode() {
+    nav.navigate(screens.GuestMode);
+  }
+
+  const { viewer } = useStore();
+  if (!viewer.isLoggedIn) {
     nav.navigate(screens.GuestMode);
   }
 

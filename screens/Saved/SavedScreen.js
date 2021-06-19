@@ -14,33 +14,24 @@ import { AuthBottom, Touchable } from '../../components';
 import { useNavigation } from '@react-navigation/native';
 import { useStore } from '../../stores/CreateStore';
 import { observer } from 'mobx-react';
+import NotLogined from '../../components/NotLogined/NotLogined';
+import { AntDesign } from '@expo/vector-icons';
 
 function SavedScreen() {
   const { viewer } = useStore();
 
   if (!viewer.isLoggedIn) {
     return (
-      <ScrollView>
-        <Text>Saved Screen Guest mode</Text>
-        <Image
-          style={{ width: 100, height: 100 }}
-          source={{
-            uri: 'https://res.cloudinary.com/apiko-spring-coures-2019/image/upload/v1609078979/yawzvhlv2mrnheypbs75.jpg',
-          }}
-        />
-      </ScrollView>
+      <View style={s.mainContainer}>
+        <NotLogined text="Login to save items" />
+      </View>
     );
   }
   return (
-    <ScrollView>
-      <Text>Saved Screen</Text>
-      <Image
-        style={{ width: 100, height: 100 }}
-        source={{
-          uri: 'https://res.cloudinary.com/apiko-spring-coures-2019/image/upload/v1609078979/yawzvhlv2mrnheypbs75.jpg',
-        }}
-      />
-    </ScrollView>
+    <View style={s.mainContainer}>
+      <AntDesign name="picture" size={62} color="black" />
+      <Text>No saved items yet</Text>
+    </View>
   );
 }
 

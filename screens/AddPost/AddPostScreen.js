@@ -21,6 +21,9 @@ import { colors } from '../../styles';
 // import * as PermissSions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 import { useEffect } from 'react';
+import NotLogined from '../../components/NotLogined/NotLogined';
+import { useStore } from '../../stores/CreateStore';
+import { observer } from 'mobx-react';
 
 function AddPostScreen() {
   const actionRef = useRef();
@@ -96,6 +99,10 @@ function AddPostScreen() {
       setImage(resultCamera.uri);
     }
   };
+  const { viewer } = useStore();
+  if (!viewer.isLoggedIn) {
+    return <NotLogined text="Login to add new post" />;
+  }
   return (
     <ScrollView style={s.mainContainer}>
       <View style={s.keyInfoContainer}>
@@ -193,4 +200,4 @@ function AddPostScreen() {
   );
 }
 
-export default AddPostScreen;
+export default observer(AddPostScreen);

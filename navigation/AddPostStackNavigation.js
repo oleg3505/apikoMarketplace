@@ -25,13 +25,14 @@ export function AddPostStackNavigation() {
         name={screens.AddPost}
         component={AddPostScreen}
         options={{
-          headerLeft: () => (
-            <Touchable onPress={closeAddPost}>
-              <Ionicons name="close" size={30} color="#349A89" />
-            </Touchable>
-          ),
-          headerTitleAlign: 'center',
-          headerTitle: 'New Post',
+          // headerLeft: () => (
+          //   <Touchable onPress={closeAddPost}>
+          //     <Ionicons name="close" size={30} color="#349A89" />
+          //   </Touchable>
+          // ),
+          // headerTitleAlign: 'center',
+          // headerTitle: 'New Post',
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

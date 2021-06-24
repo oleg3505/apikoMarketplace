@@ -24,6 +24,9 @@ import { useEffect } from 'react';
 import NotLogined from '../../components/NotLogined/NotLogined';
 import { useStore } from '../../stores/CreateStore';
 import { observer } from 'mobx-react';
+import { screens } from '../../navigation/screens';
+import Api from '../../api';
+import * as SecureStore from 'expo-secure-store';
 
 function AddPostScreen() {
   const actionRef = useRef();
@@ -40,10 +43,6 @@ function AddPostScreen() {
   const [price, setPrice] = useState('');
   function onChagePrice(val) {
     setPrice(val);
-  }
-  const [cash, setCash] = useState('');
-  function onChageCash(val) {
-    setCash(val);
   }
 
   function onChooseCamera() {
@@ -63,6 +62,22 @@ function AddPostScreen() {
   }
 
   const [image, setImage] = useState(null);
+
+  const body = {
+    title: title,
+    description: description,
+    photos: [image],
+    price: price,
+  };
+
+  async function onPressPost() {
+    const token = await SecureStore.getItemAsync('__token');
+    // try {
+    //   await Api.Products.postProduct(token, body);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  }
 
   useEffect(() => {
     (async () => {
@@ -103,8 +118,23 @@ function AddPostScreen() {
   if (!viewer.isLoggedIn) {
     return <NotLogined text="Login to add new post" />;
   }
+  const nav = useNavigation();
+  function closeAddPost() {
+    nav.navigate(screens.Brovse);
+  }
   return (
     <ScrollView style={s.mainContainer}>
+      <View style={s.headerContainer}>
+        <Touchable onPress={closeAddPost}>
+          <Ionicons name="close" size={30} color="#349A89" />
+        </Touchable>
+        <View style={s.headerText}>
+          <Text style={s.headerNewPostText}>New Post</Text>
+        </View>
+        <Touchable onPress={onPressPost}>
+          <Text style={s.headerPostText}>Post</Text>
+        </Touchable>
+      </View>
       <View style={s.keyInfoContainer}>
         <Text>KEY INFORMATION</Text>
         <View style={s.titleInput}>
@@ -156,13 +186,7 @@ function AddPostScreen() {
               />
             </View>
             <View style={s.cashInputContainer}>
-              <TextInput
-                style={s.cashTextInput}
-                placeholder="$"
-                defaultValue="$"
-                value={cash}
-                onChangeText={onChageCash}
-              />
+              <Text style={{ color: colors.primary }}>$</Text>
             </View>
           </View>
         </View>

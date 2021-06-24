@@ -7,6 +7,25 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     // alignItems: 'center',
   },
+  headerContainer: {
+    padding: 20,
+    paddingTop: 30,
+    height: 70,
+    flexDirection: 'row',
+    backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  headerText: {
+    // backgroundColor: 'red',
+  },
+  headerNewPostText: {
+    fontSize: 20,
+  },
+  headerPostText: {
+    fontSize: 20,
+    color: colors.primary,
+  },
   keyInfoContainer: {
     padding: 20,
   },

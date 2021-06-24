@@ -57,7 +57,11 @@ export const Products = {
   getById(id) {
     return axios.get(`products/${id}`);
   },
-  postProduct(data) {
-    return axios.post();
+
+  postProduct(token, body) {
+    return axios.post('/products', {
+      headers: { Authorization: `Bearer ${token}` },
+      data: body,
+    });
   },
 };

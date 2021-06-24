@@ -42,8 +42,16 @@ function SettingsScreen() {
   const { viewer } = useStore();
 
   function onPressLogOut() {
-    viewer.logOut();
-    nav.navigate(screens.Main);
+    Alert.alert('Logout', 'Logout', [
+      {
+        text: 'ok',
+        onPress: () => {
+          viewer.logOut();
+          nav.navigate(screens.Main);
+        },
+      },
+      { text: 'Cansel', style: 'cancel' },
+    ]);
   }
 
   if (!viewer.isLoggedIn) {

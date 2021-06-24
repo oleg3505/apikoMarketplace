@@ -20,6 +20,8 @@ import { useStore } from '../../stores/CreateStore';
 import { observer } from 'mobx-react';
 
 function ProfileScreen() {
+  placeHolderImg =
+    'https://vyshnevyi-partners.com/wp-content/uploads/2016/12/no-avatar.png';
   const nav = useNavigation();
   function onPressSettings() {
     nav.navigate(screens.Settings);
@@ -31,11 +33,28 @@ function ProfileScreen() {
 
   return (
     <View style={s.mainContainer}>
-      <Touchable onPress={onPressSettings}>
+      <Touchable style={s.settings} onPress={onPressSettings}>
         <View>
           <Entypo name="dots-three-vertical" size={24} color="black" />
         </View>
       </Touchable>
+      {viewer.isLoggedIn ? (
+        <View style={s.container}>
+          <View style={s.viewerContainer}>
+            <Image
+              style={s.imgContainer}
+              source={{
+                uri: viewer.userModel.avatar
+                  ? viewer.userModel.avatar
+                  : placeHolderImg,
+              }}
+            />
+            <Text>{viewer.userModel.fullName}</Text>
+          </View>
+          <AntDesign name="dropbox" size={62} color="black" />
+          <Text>User doesn’t sell anything yet</Text>
+        </View>
+      ) : null}
     </View>
   );
 }

@@ -14,7 +14,7 @@ export const UsersCollection = createCollection(UserModel, {
 
 function getUser(id) {
   return async function getUserFlow(flow, store) {
-    const res = await Api.Users.fetchLatest();
+    const res = await Api.Account.getUserById(id);
     store.add(res.data.id, {
       ...res.data,
       owner: res.data.owner.id,

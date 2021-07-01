@@ -28,10 +28,11 @@ export const Auth = {
       password,
     });
   },
-  register({ email, password }) {
+  register({ email, password, fullName }) {
     return axios.post('/auth/register', {
       email,
       password,
+      fullName,
     });
   },
 };
@@ -58,10 +59,29 @@ export const Products = {
     return axios.get(`products/${id}`);
   },
 
-  postProduct(token, body) {
-    return axios.post('/products', {
-      headers: { Authorization: `Bearer ${token}` },
-      data: body,
+  postProduct(body) {
+    return axios.post('/products', body);
+  },
+};
+
+export const Chats = {
+  createChat(id, message) {
+    return axios.post(`/products/${id}/createChat`, {
+      message,
     });
+  },
+
+  getList() {
+    return axios.get('/chats');
+  },
+
+  sendMessage(id, message) {
+    return axios.post(`/chats/${id}/messages`, {
+      message,
+    });
+  },
+
+  getMessages(id) {
+    return axios.get(`/chats/${id}/messages`);
   },
 };

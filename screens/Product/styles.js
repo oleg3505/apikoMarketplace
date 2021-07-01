@@ -3,14 +3,13 @@ import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
   mainContainer: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: colors.white,
   },
   imgContainer: {
     width: '100%',
-    minHeight: '70%',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    // minHeight: '20%',
+    height: 300,
     marginBottom: 5,
   },
   titlePriceContainer: {
@@ -38,13 +37,37 @@ const styles = StyleSheet.create({
     margin: 10,
     borderBottomWidth: 2,
     borderColor: colors.borderGrey,
-    height: 72,
+    height: 48,
   },
   ownerIdContainer: {
     padding: 10,
-    height: 72,
+    height: 48,
     borderBottomWidth: 2,
     borderColor: colors.borderGrey,
+  },
+  buttonsContainer: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 5,
+    flexDirection: 'row',
+  },
+  sendMessageButton: {
+    backgroundColor: colors.blue,
+    minWidth: '45%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 15,
+    flexDirection: 'row',
+  },
+  callButton: {
+    backgroundColor: colors.primary,
+    minWidth: '45%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 15,
+    flexDirection: 'row',
   },
 });
 export default styles;

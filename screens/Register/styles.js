@@ -21,6 +21,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 20,
   },
+  fullNameInput: {
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: colors.primary,
+    height: 44,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+  },
+  fullNameBlock: {
+    marginHorizontal: 16,
+    marginTop: 20,
+  },
   passwordInput: {
     borderRadius: 5,
     borderWidth: 2,

@@ -37,13 +37,13 @@ function login({ password, email }) {
   };
 }
 
-function register({ password, email }) {
+function register({ password, email, fullName }) {
   return async function registerFlow(flow) {
     try {
       flow.start();
       const rootStore = getRoot(flow);
 
-      const res = await Api.Auth.register({ password, email });
+      const res = await Api.Auth.register({ password, email, fullName });
 
       const { token, user } = res.data;
       Api.Auth.setToken(token);

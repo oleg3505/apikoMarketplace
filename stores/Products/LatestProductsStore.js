@@ -2,7 +2,7 @@ import { types } from 'mobx-state-tree';
 import { normalize } from 'normalizr';
 import Api from '../../api';
 import { PAGE_SIZE } from '../../constants/produsts';
-import { LatestProductsCollection } from '../schemas';
+import { LatestProduct, LatestProductsCollection } from '../schemas';
 import { asyncModel } from '../utils';
 import { ProductModel } from './ProductModel';
 // import { ProductModel } from './ProductModel';
@@ -11,10 +11,11 @@ import { ProductModel } from './ProductModel';
 
 export const LatestProductsStore = types
   .model('LatestProductsStore', {
-    items: types.array(types.reference(ProductModel)),
+    items: types.array(types.safeReference(ProductModel)),
     hasNoMore: false,
     fetchLatest: asyncModel(fetchLatest),
     fetchMore: asyncModel(fetchMore, false),
+    createProduct: asyncModel(createProduct),
   })
   .actions((store) => ({
     setItems(items) {
@@ -84,6 +85,18 @@ function fetchMore() {
       flow.success();
     } catch (err) {
       flow.error();
+      console.log(err);
+    }
+  };
+}
+
+function createProduct(body) {
+  return async function createProductFlow(flow, store) {
+    try {
+      const res = await Api.Products.postProduct(body);
+      console.log(res);
+      store.fetchLatest.run();
+    } catch (err) {
       console.log(err);
     }
   };

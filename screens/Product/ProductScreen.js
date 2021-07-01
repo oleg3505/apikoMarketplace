@@ -16,6 +16,10 @@ import { screens } from '../../navigation/screens';
 import { version } from 'react/cjs/react.development';
 import { Entypo } from '@expo/vector-icons';
 import Api from '../../api';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { colors } from '../../styles';
+import UserInfo from '../../components/UserInfo/UserInfo';
 
 function ProductScreen({ route }) {
   const { item } = route.params;
@@ -25,7 +29,7 @@ function ProductScreen({ route }) {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={s.mainContainer}>
-        <View style={s.imgContent}>
+        <View style={s.imgContainer}>
           <Image
             style={s.imgContainer}
             source={{
@@ -33,19 +37,31 @@ function ProductScreen({ route }) {
             }}
           />
         </View>
-        <View style={s.titlePriceContainer}>
-          <Text style={s.titleTextContainer}>{item.title}</Text>
-          <Text style={s.priceTextContainer}>{item.price} $</Text>
-        </View>
-        <View style={s.locationContainer}>
-          <Entypo name="location-pin" size={24} color="black" />
-          <Text>{item.location}</Text>
-        </View>
-        <View style={s.descriptionContainer}>
-          <Text>{item.description}</Text>
-        </View>
-        <View style={s.ownerIdContainer}>
-          <Text>{item.ownerId} 877</Text>
+        <View style={{ flex: 1 }}>
+          <View style={s.titlePriceContainer}>
+            <Text style={s.titleTextContainer}>{item.title}</Text>
+            <Text style={s.priceTextContainer}>{item.price} $</Text>
+          </View>
+          <View style={s.locationContainer}>
+            <Entypo name="location-pin" size={24} color="black" />
+            <Text>{item.location}</Text>
+          </View>
+          <View style={s.descriptionContainer}>
+            <Text>{item.description}</Text>
+          </View>
+          <View style={s.ownerIdContainer}>
+            <UserInfo ownerId={item.ownerId} />
+          </View>
+          <View style={s.buttonsContainer}>
+            <Touchable style={s.callButton}>
+              <Ionicons name="ios-call" size={24} color={colors.white} />
+              <Text style={{ color: colors.white }}>Call</Text>
+            </Touchable>
+            <Touchable style={s.sendMessageButton}>
+              <MaterialIcons name="message" size={24} color={colors.white} />
+              <Text style={{ color: colors.white }}>Send message</Text>
+            </Touchable>
+          </View>
         </View>
       </View>
     </ScrollView>

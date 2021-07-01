@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import Api from '../../api';
 import * as SecureStore from 'expo-secure-store';
 import { screens } from '../../navigation/screens';
+import { useStore } from '../../stores/CreateStore';
 
 function RegisterScreen() {
   const nav = useNavigation();
@@ -27,6 +28,10 @@ function RegisterScreen() {
   function onChageEmail(val) {
     setEmail(val);
   }
+  const [fullName, setFullName] = useState('');
+  function onChageFullName(val) {
+    setFullName(val);
+  }
   const [password, setPassword] = useState('');
   function onChangePassword(val) {
     setPassword(val);
@@ -36,10 +41,12 @@ function RegisterScreen() {
     setRepeatPassword(val);
   }
 
+  const store = useStore();
+
   async function onPressRegister() {
     if (password === repeatPassword) {
       try {
-        await store.auth.register.run({ email, password });
+        await store.auth.register.run({ email, password, fullName });
         if (await SecureStore.getItemAsync('__token')) {
           nav.navigate(screens.GuestMode);
         }
@@ -61,6 +68,14 @@ function RegisterScreen() {
             value={email}
             keyboardType="email-address"
             onChangeText={onChageEmail}
+          />
+        </View>
+        <View style={s.fullNameBlock}>
+          <Text style={s.label}>Full Name</Text>
+          <TextInput
+            style={s.fullNameInput}
+            value={fullName}
+            onChangeText={onChageFullName}
           />
         </View>
         <View style={s.passwordBlock}>

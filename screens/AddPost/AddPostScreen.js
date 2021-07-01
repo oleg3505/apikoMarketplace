@@ -27,6 +27,7 @@ import { observer } from 'mobx-react';
 import { screens } from '../../navigation/screens';
 import Api from '../../api';
 import * as SecureStore from 'expo-secure-store';
+import { Entypo } from '@expo/vector-icons';
 
 function AddPostScreen() {
   const actionRef = useRef();
@@ -45,6 +46,11 @@ function AddPostScreen() {
     setPrice(val);
   }
 
+  const [location, setLocation] = useState('');
+  function onChageLocation(val) {
+    setLocation(val);
+  }
+
   function onChooseCamera() {
     pickImageCamera();
     actionRef.current.hide();
@@ -61,22 +67,24 @@ function AddPostScreen() {
     actionRef.current?.setModalVisible();
   }
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState([]);
 
   const body = {
     title: title,
     description: description,
-    photos: [image],
-    price: price,
+    photos: [`${image}`],
+    price: +price,
+    location: location,
   };
-
+  const { latestProducts, viewer } = useStore();
   async function onPressPost() {
-    const token = await SecureStore.getItemAsync('__token');
-    // try {
-    //   await Api.Products.postProduct(token, body);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    console.log(latestProducts);
+    latestProducts.createProduct.run(body);
+    setImage([]);
+    setPrice('');
+    setDescription('');
+    setLocation('');
+    nav.navigate(screens.Brovse);
   }
 
   useEffect(() => {
@@ -99,7 +107,7 @@ function AddPostScreen() {
     });
 
     if (!result.cancelled) {
-      setImage(result.uri);
+      setImage((prevState) => [...prevState, result.uri]);
     }
   };
   const pickImageCamera = async () => {
@@ -111,10 +119,10 @@ function AddPostScreen() {
     });
 
     if (!resultCamera.cancelled) {
-      setImage(resultCamera.uri);
+      setImage((prevState) => [...prevState, resultCamera.uri]);
     }
   };
-  const { viewer } = useStore();
+
   if (!viewer.isLoggedIn) {
     return <NotLogined text="Login to add new post" />;
   }
@@ -162,12 +170,13 @@ function AddPostScreen() {
           <Touchable style={s.addPhoto} onPress={onOpenActionSheet}>
             <Ionicons name="add" size={24} color={colors.grey} />
           </Touchable>
-          {image && (
-            <Image
-              source={{ uri: image }}
-              style={{ width: 100, height: 100, marginHorizontal: 10 }}
-            />
-          )}
+          {image &&
+            image.map((uri) => (
+              <Image
+                source={{ uri }}
+                style={{ width: 100, height: 100, marginHorizontal: 10 }}
+              />
+            ))}
         </View>
       </View>
       <View>
@@ -187,6 +196,26 @@ function AddPostScreen() {
             </View>
             <View style={s.cashInputContainer}>
               <Text style={{ color: colors.primary }}>$</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View style={s.priceTextContainer}>
+          <Text>LOCATION</Text>
+        </View>
+        <View style={s.addPriceContainer}>
+          <View style={s.priceCashContainer}>
+            <View style={s.priceInputContainer}>
+              <TextInput
+                style={s.priceTextInput}
+                placeholder="Location"
+                value={location}
+                onChangeText={onChageLocation}
+              />
+            </View>
+            <View style={s.cashInputContainer}>
+              <Entypo name="location-pin" size={24} color={colors.primary} />
             </View>
           </View>
         </View>

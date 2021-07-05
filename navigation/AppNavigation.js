@@ -1,6 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginScreen, MainScreen, RegisterScreen } from '../screens';
+import {
+  AddPostScreen,
+  LoginScreen,
+  MainScreen,
+  RegisterScreen,
+} from '../screens';
 import { NavigationContainer } from '@react-navigation/native';
 
 import TabNavigation from './TabNavigation';

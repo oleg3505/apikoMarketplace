@@ -25,7 +25,12 @@ import { screens } from './screens';
 const Tab = createBottomTabNavigator();
 export default function TabNavigation() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      backBehavior="initialRoute"
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+      }}
+    >
       <Tab.Screen
         name={screens.Brovse}
         options={{
@@ -61,6 +66,7 @@ export default function TabNavigation() {
       <Tab.Screen
         name={screens.AddPost}
         options={{
+          // tabBarVisible: false,
           tabBarLabel: (props) => (
             <Text style={[props.focused ? s.active : s.inactive]}> </Text>
           ),

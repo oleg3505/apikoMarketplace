@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
   },
 
   addIcon: {
-    padding: 10,
-    borderRadius: 28,
+    // padding: 10,
+    // borderRadius: 28,
+    top: 10,
   },
 });
 export default styles;

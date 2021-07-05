@@ -15,6 +15,7 @@ import { screens } from './screens';
 const Stack = createStackNavigator();
 export function AddPostStackNavigation() {
   const nav = useNavigation();
+
   function closeAddPost() {
     nav.navigate(screens.Brovse);
   }

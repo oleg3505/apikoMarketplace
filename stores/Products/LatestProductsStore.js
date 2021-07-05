@@ -11,7 +11,7 @@ import { ProductModel } from './ProductModel';
 
 export const LatestProductsStore = types
   .model('LatestProductsStore', {
-    items: types.array(types.safeReference(ProductModel)),
+    items: types.array(types.reference(ProductModel)),
     hasNoMore: false,
     fetchLatest: asyncModel(fetchLatest),
     fetchMore: asyncModel(fetchMore, false),

@@ -35,7 +35,9 @@ export function Products({ item }) {
         <Text style={s.titleContainer}>{item.title}</Text>
         <View style={s.bottomContainer}>
           <Text>{item.price + ' $'}</Text>
-          <Ionicons name="ios-bookmark-sharp" size={24} color={colors.grey} />
+          <Touchable>
+            <Ionicons name="ios-bookmark-sharp" size={24} color={colors.grey} />
+          </Touchable>
         </View>
       </Touchable>
     </View>

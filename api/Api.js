@@ -44,7 +44,7 @@ export const Account = {
     });
   },
   getUserById(id) {
-    return axios.get(`/user/${id}`);
+    return axios.get(`/users/${id}`);
   },
 };
 
@@ -57,6 +57,9 @@ export const Products = {
   },
   getById(id) {
     return axios.get(`products/${id}`);
+  },
+  fetchOwnProducts(id) {
+    return axios.get(`/users/${id}/products`);
   },
 
   postProduct(body) {

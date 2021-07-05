@@ -7,12 +7,14 @@ import { LatestProductsStore } from './Products/LatestProductsStore';
 import { ViewerStore } from './ViewerStore';
 import { EntitiesStore } from './EntitiesStore';
 import { ChatStore } from './Chats/ChatStore';
+import { OwnProducts } from './Products/OwnProductsStore';
 
 export const RootStore = types
   .model('RootStore', {
     auth: types.optional(AuthStore, {}),
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
+    ownProducts: types.optional(OwnProducts, {}),
     chats: types.optional(ChatStore, {}),
     entities: types.optional(EntitiesStore, {}),
   })

@@ -6,7 +6,7 @@ export const Product = new schema.Entity('products', {
 });
 export const LatestProduct = new schema.Entity('products');
 export const LatestProductsCollection = [LatestProduct];
-export const OwnProducts = [LatestProduct];
+export const OwnProductsCollection = [LatestProduct];
 export const MessagesSchema = new schema.Entity('messages');
 export const MessageCollectionSchema = [MessagesSchema];
 export const ChatSchema = new schema.Entity('chats', {

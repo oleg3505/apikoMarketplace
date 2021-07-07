@@ -11,7 +11,7 @@ import { ProductModel } from './ProductModel';
 
 export const LatestProductsStore = types
   .model('LatestProductsStore', {
-    items: types.array(types.reference(ProductModel)),
+    items: types.array(types.safeReference(ProductModel)),
     hasNoMore: false,
     fetchLatest: asyncModel(fetchLatest),
     fetchMore: asyncModel(fetchMore, false),
@@ -43,16 +43,16 @@ function fetchLatest() {
     const res = await Api.Products.fetchLatest();
 
     const result = flow.merge(res.data, LatestProductsCollection);
-
+    console.log(result);
     store.setHasNoMore(res.data.length < PAGE_SIZE);
 
     store.setItems(result);
 
-    const ids = res.data.map((item) => {
-      Root.entities.produsts.add(item.id, item);
-      return item.id;
-    });
-    store.setItems(ids);
+    // const ids = res.data.map((item) => {
+    //   Root.entities.produsts.add(item.id, item);
+    //   return item.id;
+    // });
+    // store.setItems(ids);
   };
 }
 
@@ -74,6 +74,7 @@ function fetchMore() {
         from: from.id,
         limit: PAGE_SIZE,
       });
+
       const result = flow.merge(res.data, LatestProductsCollection);
 
       if (res.data.length < PAGE_SIZE) {
@@ -91,11 +92,12 @@ function fetchMore() {
 }
 
 function createProduct(body) {
-  return async function createProductFlow(flow, store) {
+  return async function createProductFlow(flow, store, root) {
     try {
       const res = await Api.Products.postProduct(body);
-      console.log(res);
+
       store.fetchLatest.run();
+      root.ownProducts.fetchOwnProducts.run();
     } catch (err) {
       console.log(err);
     }

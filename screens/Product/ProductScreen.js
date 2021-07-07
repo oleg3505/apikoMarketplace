@@ -1,27 +1,18 @@
 import React, { useEffect } from 'react';
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  Image,
-  ScrollView,
-} from 'react-native';
+import { Text, View, TextInput, Image, ScrollView } from 'react-native';
 import { useState } from 'react';
 import s from './styles';
-import { AuthBottom, Touchable } from '../../components';
-import { useNavigation } from '@react-navigation/native';
-import { screens } from '../../navigation/screens';
-import { version } from 'react/cjs/react.development';
+import { Touchable } from '../../components';
+
 import { Entypo } from '@expo/vector-icons';
-import Api from '../../api';
+
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../../styles';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import { Linking } from 'react-native';
 import { useStore } from '../../stores/CreateStore';
+import Carousel from 'react-native-snap-carousel';
 
 function ProductScreen({ route }) {
   const { item } = route.params;
@@ -39,6 +30,15 @@ function ProductScreen({ route }) {
     Linking.openURL(`tel:${item.ownerId}`);
     console.log(item.ownerId);
   }
+  const [sending, setSending] = useState(false);
+  const [message, setMessage] = useState('');
+  function onChangeText(val) {
+    setMessage(val);
+  }
+  function onPressSendMessage() {
+    setSending(true);
+  }
+  async function sendMessage() {}
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={s.mainContainer}>
@@ -72,11 +72,24 @@ function ProductScreen({ route }) {
               <Ionicons name="ios-call" size={24} color={colors.white} />
               <Text style={{ color: colors.white }}>Call</Text>
             </Touchable>
-            <Touchable style={s.sendMessageButton}>
+            <Touchable style={s.sendMessageButton} onPress={onPressSendMessage}>
               <MaterialIcons name="message" size={24} color={colors.white} />
               <Text style={{ color: colors.white }}>Send message</Text>
             </Touchable>
           </View>
+          {sending ? (
+            <View style={s.messageInputContainer}>
+              <TextInput
+                multiline={true}
+                style={s.messageInput}
+                value={message}
+                onChangeText={onChangeText}
+              />
+              <Touchable onPress={sendMessage}>
+                <Ionicons name="send" size={24} color={colors.primary} />
+              </Touchable>
+            </View>
+          ) : null}
         </View>
       </View>
     </ScrollView>

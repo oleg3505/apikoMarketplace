@@ -1,5 +1,6 @@
 export const screens = {
   AddPost: 'AddPost',
+  AddPostModal: 'AddPostModal',
   Main: 'Main',
   Login: 'Login',
   Register: 'Register',
@@ -12,4 +13,5 @@ export const screens = {
   Product: 'Product',
   Settings: 'Settings',
   WebView: 'WebView',
+  Chat: 'Chat',
 };

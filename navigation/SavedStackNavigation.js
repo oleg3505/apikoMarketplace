@@ -4,6 +4,7 @@ import {
   AddPostScreen,
   LoginScreen,
   MainScreen,
+  ProductScreen,
   RegisterScreen,
   SavedScreen,
 } from '../screens';
@@ -24,6 +25,15 @@ export function SavedStackNavigation() {
           headerLeft: false,
           headerTitleAlign: 'center',
           headerTitle: () => <SearchInput nameBack="Saved" />,
+        }}
+      />
+      <Stack.Screen
+        name={screens.Product}
+        component={ProductScreen}
+        options={{
+          headerTitleAlign: 'center',
+          headerTitle: false,
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>

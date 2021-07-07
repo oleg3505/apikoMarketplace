@@ -11,7 +11,7 @@ export const ProductModel = types
     title: types.string,
     description: types.maybeNull(types.string),
     photos: types.maybeNull(types.array(types.string)),
-    location: types.string,
+    location: types.maybe(types.string),
     price: types.number,
     saved: types.optional(types.boolean, false),
     createAt: types.maybe(types.string),

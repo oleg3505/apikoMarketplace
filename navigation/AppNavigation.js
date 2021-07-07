@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   AddPostScreen,
+  Chat,
   LoginScreen,
   MainScreen,
   RegisterScreen,
@@ -18,7 +19,7 @@ const Stack = createStackNavigator();
 export function AppNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator mode="modal">
         <Stack.Screen
           name={screens.Main}
           component={MainScreen}
@@ -45,6 +46,21 @@ export function AppNavigation() {
           component={TabNavigation}
           options={{
             headerShown: false,
+          }}
+        />
+        {/* modal navigator */}
+        <Stack.Screen
+          name={screens.AddPostModal}
+          component={AddPostScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name={screens.Chat}
+          component={Chat}
+          options={{
+            title: 'Chat',
           }}
         />
       </Stack.Navigator>

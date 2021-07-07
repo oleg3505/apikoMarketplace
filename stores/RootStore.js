@@ -8,6 +8,7 @@ import { ViewerStore } from './ViewerStore';
 import { EntitiesStore } from './EntitiesStore';
 import { ChatStore } from './Chats/ChatStore';
 import { OwnProducts } from './Products/OwnProductsStore';
+import { SavedProducts } from './Products/SavedProductsStore';
 
 export const RootStore = types
   .model('RootStore', {
@@ -15,6 +16,7 @@ export const RootStore = types
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
     ownProducts: types.optional(OwnProducts, {}),
+    savedProducts: types.optional(SavedProducts, {}),
     chats: types.optional(ChatStore, {}),
     entities: types.optional(EntitiesStore, {}),
   })

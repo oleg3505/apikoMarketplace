@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  ScrollView,
-  Image,
-} from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import { useState } from 'react';
 import s from './styles';
 import { AuthBottom, Touchable } from '../../components';
@@ -16,9 +8,15 @@ import { useStore } from '../../stores/CreateStore';
 import { observer } from 'mobx-react';
 import NotLogined from '../../components/NotLogined/NotLogined';
 import { AntDesign } from '@expo/vector-icons';
+import { useEffect } from 'react';
+import { Products } from '../../components/Products/Products';
 
 function SavedScreen() {
-  const { viewer } = useStore();
+  const { viewer, savedProducts } = useStore();
+
+  useEffect(() => {
+    savedProducts.fetchSavedProducts.run();
+  }, []);
 
   if (!viewer.isLoggedIn) {
     return (
@@ -28,9 +26,17 @@ function SavedScreen() {
     );
   }
   return (
-    <View style={s.mainContainer}>
-      <AntDesign name="picture" size={62} color="black" />
-      <Text>No saved items yet</Text>
+    <View style={{ flex: 1 }}>
+      <FlatList
+        style={[s.content, { flex: 1 }]}
+        contentContainerStyle={{ flexGrow: 1 }}
+        renderItem={({ item }) => <Products item={item} />}
+        numColumns={2}
+        refreshing={savedProducts.fetchSavedProducts.isLoading}
+        onRefresh={() => savedProducts.fetchSavedProducts.run()}
+        keyExtractor={(item) => item.id}
+        data={savedProducts.items}
+      />
     </View>
   );
 }

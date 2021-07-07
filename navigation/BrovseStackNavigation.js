@@ -49,10 +49,8 @@ export function BrovseStackNavigation() {
         name={screens.Product}
         component={ProductScreen}
         options={{
-          // headerLeft: false,
           headerTitleAlign: 'center',
           headerTitle: false,
-          // headerShown: false,
           headerTransparent: true,
         }}
       />

@@ -2,14 +2,7 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {
-  BrovseScreen,
-  SavedScreen,
-  InboxScreen,
-  ProfileScreen,
-  AddPostScreen,
-} from '../screens';
-import { AddPostStackNavigation } from './AddPostStackNavigation';
+
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -65,6 +58,13 @@ export default function TabNavigation() {
       />
       <Tab.Screen
         name={screens.AddPost}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            console.log(e);
+            navigation.navigate(screens.AddPostModal);
+          },
+        })}
         options={{
           // tabBarVisible: false,
           tabBarLabel: (props) => (
@@ -79,7 +79,7 @@ export default function TabNavigation() {
             />
           ),
         }}
-        component={AddPostStackNavigation}
+        component={View}
       />
       <Tab.Screen
         name={screens.Inbox}

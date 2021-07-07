@@ -3,7 +3,7 @@ import socket from 'socket.io-client';
 class SocketApi {
   socket = null;
   init(token) {
-    this.soket = socket('http://localhost:19002', {
+    this.socket = socket('http://localhost:19002', {
       query: {
         token,
       },

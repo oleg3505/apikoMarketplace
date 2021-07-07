@@ -7,9 +7,27 @@ import { colors } from '../../styles';
 import { Touchable } from '../../components';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../../navigation/screens';
+import { observer } from 'mobx-react';
+import { useStore } from '../../stores/CreateStore';
 
-export function Products({ item }) {
+export const Products = observer(({ item }) => {
   const nav = useNavigation();
+  const { savedProducts, viewer } = useStore();
+
+  async function onPressSaved() {
+    if (viewer.userModel.id === item.ownerId) {
+      alert('Can not to save own item');
+    }
+    if (!item.saved) {
+      await Api.Products.savingProduct(item.id);
+
+      savedProducts.fetchSavedProducts.run();
+    } else {
+      await Api.Products.deletingProduct(item.id);
+
+      savedProducts.fetchSavedProducts.run();
+    }
+  }
 
   function goToProduct() {
     nav.navigate(screens.Product, {
@@ -27,19 +45,20 @@ export function Products({ item }) {
           style={s.imgContainer}
           source={{
             uri: item.photos ? item.photos[0] : placeHolderImg,
-            // uri: 'https://res.cloudinary.com/apiko-spring-coures-2019/image/upload/v1609078979/yawzvhlv2mrnheypbs75.jpg',
           }}
         />
-
-        {/* <Text>{item.photos[0]}</Text> */}
         <Text style={s.titleContainer}>{item.title}</Text>
         <View style={s.bottomContainer}>
           <Text>{item.price + ' $'}</Text>
-          <Touchable>
-            <Ionicons name="ios-bookmark-sharp" size={24} color={colors.grey} />
+          <Touchable onPress={onPressSaved}>
+            <Ionicons
+              name="ios-bookmark-sharp"
+              size={24}
+              color={item.saved ? colors.primary : colors.grey}
+            />
           </Touchable>
         </View>
       </Touchable>
     </View>
   );
-}
+});

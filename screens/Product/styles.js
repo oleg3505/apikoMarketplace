@@ -69,5 +69,20 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     flexDirection: 'row',
   },
+  messageInputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    alignItems: 'flex-end',
+  },
+  messageInput: {
+    borderColor: colors.primary,
+    borderWidth: 2,
+    borderRadius: 5,
+    minHeight: 40,
+    maxHeight: 150,
+    width: '90%',
+    padding: 5,
+  },
 });
 export default styles;

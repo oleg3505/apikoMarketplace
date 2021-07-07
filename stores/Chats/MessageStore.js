@@ -24,6 +24,9 @@ export const MessageStore = types
       const result = getRoot(store).entities.normalize(message, MessagesSchema);
       store.items.unshift(result);
     },
+    setItems(items) {
+      store.items = items;
+    },
   }));
 
 function fetchMessages() {
@@ -31,8 +34,9 @@ function fetchMessages() {
     const res = await Api.Chats.getMessages(store.chatId);
     const result = flow.merge(res.data, MessageCollectionSchema);
 
-    store.runInAction((self) => {
-      self.items = result;
-    });
+    store.setItems(result);
+    // store.runInAction((self) => {
+    //   self.items = result;
+    // });
   };
 }

@@ -4,6 +4,7 @@ import {
   AddPostScreen,
   LoginScreen,
   MainScreen,
+  ProductScreen,
   ProfileScreen,
   RegisterScreen,
 } from '../screens';
@@ -12,7 +13,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { screens } from './screens';
 import SettingsScreen from '../screens/Settings/SettingsScreen';
 import WebViewScreen from '../screens/WebViev/WebViewScreen';
-
+import { SearchInput } from '../components';
+import SettingsButton from '../screens/Profile/components/SettingsButton/SettingsButton';
 const Stack = createStackNavigator();
 
 export function ProfileStackNavigation() {
@@ -21,7 +23,12 @@ export function ProfileStackNavigation() {
       <Stack.Screen
         name={screens.Profile}
         component={ProfileScreen}
-        options={{ headerShown: false }}
+        options={{
+          headerLeft: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerRight: () => <SettingsButton />,
+        }}
       />
       <Stack.Screen
         name={screens.Settings}
@@ -32,6 +39,15 @@ export function ProfileStackNavigation() {
         name={screens.WebView}
         component={WebViewScreen}
         options={{ headerTitleAlign: 'center', headerTitle: 'WebView' }}
+      />
+      <Stack.Screen
+        name={screens.Product}
+        component={ProductScreen}
+        options={{
+          headerTitleAlign: 'center',
+          headerTitle: false,
+          headerTransparent: true,
+        }}
       />
     </Stack.Navigator>
   );

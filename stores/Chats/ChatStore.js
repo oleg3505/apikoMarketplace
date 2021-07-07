@@ -13,6 +13,9 @@ export const ChatStore = types
     runInAction(cb) {
       cb(store);
     },
+    setItems(items) {
+      store.items = items;
+    },
     handleMessage(message) {
       if (message.type === 'ADD') {
         const chat = store.getById(message.message.chatId);
@@ -31,10 +34,13 @@ export const ChatStore = types
 function fetchChats() {
   return async function fetchChatsFlow(flow, store) {
     const res = await Api.Chats.getList();
-    const result = flow.merge(res.data, ChatCollectionShema);
 
-    store.runInAction((self) => {
-      self.items = result;
-    });
+    const result = flow.merge(res.data, ChatCollectionShema);
+    console.log(result);
+    store.setItems(result);
+    // console.log(store.items[0].id);
+    // store.runInAction((self) => {
+    //   self.items = result;
+    // });
   };
 }

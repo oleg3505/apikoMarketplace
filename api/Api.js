@@ -61,9 +61,23 @@ export const Products = {
   fetchOwnProducts(id) {
     return axios.get(`/users/${id}/products`);
   },
+  fetchSavedProducts() {
+    return axios.get('/products/saved');
+  },
 
   postProduct(body) {
     return axios.post('/products', body);
+  },
+
+  savingProduct(id) {
+    return axios.post(`/products/${id}/saved`, {
+      success: true,
+    });
+  },
+  deletingProduct(id) {
+    return axios.delete(`/products/${id}/saved`, {
+      success: true,
+    });
   },
 };
 

@@ -32,7 +32,7 @@ export const ChatModel = types
 function sendMessage(text) {
   return async function sendMessageFlow(flow, store) {
     const res = await Api.Chats.sendMessage(store.id, text);
-    // store.messages.addMessage(res.data);
-    const result = flow.merge(res.data, MessagesSchema);
+    store.messages.addMessage(res.data);
+    // const result = flow.merge(res.data, MessagesSchema);
   };
 }

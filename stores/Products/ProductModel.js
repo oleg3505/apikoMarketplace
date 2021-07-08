@@ -25,7 +25,7 @@ export const ProductModel = types
     fetchOwner() {
       getRoot(store).entities.users.getUser.run(store.ownerId);
 
-      store.owner = store.ownerId;
+      // store.owner = store.ownerId;
     },
     setChatId(id) {
       store.chatId = id;
@@ -40,6 +40,7 @@ function createChat(message) {
       const res = await Api.Chats.createChat(store.id, message);
       chatId = res.data.id;
       store.setChatId(chatId);
+      console.log(store.owner);
 
       res.data.participants = [getSnapshot(store.owner)];
       flow.merge(res.data, ChatSchema);

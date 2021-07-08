@@ -10,6 +10,7 @@ function ChatItem({ item }) {
   function onItemPress() {
     nav.navigate(screens.Chat, {
       chatId: item.id,
+      product: item,
     });
   }
   return (

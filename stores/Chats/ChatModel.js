@@ -14,11 +14,11 @@ export const ChatModel = types
     ownerId: types.number,
     createdAt: types.string,
     updatedAt: types.string,
-    message: types.reference(MessageModel),
+    message: types.safeReference(MessageModel),
     messages: types.optional(MessageStore, {}),
-    product: types.reference(ProductModel),
-    participants: types.array(types.reference(UserModel)),
-    user: types.reference(UserModel),
+    product: types.safeReference(ProductModel),
+    participants: types.array(types.safeReference(UserModel)),
+    user: types.safeReference(UserModel),
     sendMessage: asyncModel(sendMessage),
   })
 

@@ -11,20 +11,39 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../styles';
 
 function Chat({ route }) {
-  const { chatId } = route.params;
+  const { chatId, product } = route.params;
   const { chats, viewer } = useStore();
-  const chat = chats.getById(+chatId);
-  console.log(chat.messages.items);
+  const chat = chats.getById(chatId ? chatId : +product.chatId);
+
   const viewerId = viewer.userModel.id;
   useEffect(() => {
-    chats.getById(+chatId).messages.fetch.run();
+    if (chat) {
+      chats.getById(+chatId).messages.fetch.run();
+    } else {
+      chats.fetch.run();
+      // async function fetchChats() {
+      //   await chats.fetch.run();
+      // }
+    }
   }, []);
 
   const [message, setMessage] = useState();
-
   function onSendMessage() {
-    chat.sendMessage.run(message);
-    setMessage('');
+    async function onChat() {
+      const chatID = await product.createChat.run(message);
+
+      setMessage('');
+      await chats.fetch.run();
+      chats.getById(+chatID).messages.fetch.run();
+    }
+    if (chatId) {
+      chat.sendMessage.run(message);
+      setMessage('');
+      return;
+    }
+    if (product) {
+      onChat();
+    }
   }
 
   return (
@@ -34,7 +53,7 @@ function Chat({ route }) {
         style={{ flex: 1, padding: 10 }}
         contentContainerStyle={{ flexGrow: 1 }}
         inverted={true}
-        data={chat.messages.items}
+        data={chat ? chat.messages.items : []}
         renderItem={({ item }) => <Message item={item} viewerId={viewerId} />}
       />
       <View style={s.sendMessageContainer}>

@@ -7,7 +7,7 @@ import { MessagesCollection } from './MessagesCollection';
 
 export const MessageStore = types
   .model('MessageStore', {
-    items: types.array(types.reference(MessageModel)),
+    items: types.array(types.safeReference(MessageModel)),
 
     fetch: asyncModel(fetchMessages),
   })

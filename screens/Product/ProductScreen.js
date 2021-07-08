@@ -13,6 +13,9 @@ import UserInfo from '../../components/UserInfo/UserInfo';
 import { Linking } from 'react-native';
 import { useStore } from '../../stores/CreateStore';
 import Carousel from 'react-native-snap-carousel';
+import { useNavigation } from '@react-navigation/native';
+import { screens } from '../../navigation/screens';
+import { observer } from 'mobx-react';
 
 function ProductScreen({ route }) {
   const { item } = route.params;
@@ -22,23 +25,27 @@ function ProductScreen({ route }) {
   const { latestProducts, entities } = useStore();
 
   useEffect(() => {
-    // latestProducts.fetchOwner.run(item.ownerId);
-    // entities.users.getUser.run(item.ownerId);
-    // console.log(latestProducts.owner);
+    entities.products.getProduct.run(item.id);
+    console.log('use', item);
   }, []);
   function onPressCall() {
-    Linking.openURL(`tel:${item.ownerId}`);
-    console.log(item.ownerId);
+    // Linking.openURL(`tel:${item.owner.phone}`);
+    console.log(item);
   }
-  const [sending, setSending] = useState(false);
+
   const [message, setMessage] = useState('');
-  function onChangeText(val) {
-    setMessage(val);
-  }
+
+  const nav = useNavigation();
   function onPressSendMessage() {
-    setSending(true);
+    // setSending(true);
+    nav.navigate(screens.Chat, {
+      chatId: item.chatId,
+      product: item,
+    });
+    console.log(item);
   }
   async function sendMessage() {}
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={s.mainContainer}>
@@ -77,23 +84,10 @@ function ProductScreen({ route }) {
               <Text style={{ color: colors.white }}>Send message</Text>
             </Touchable>
           </View>
-          {sending ? (
-            <View style={s.messageInputContainer}>
-              <TextInput
-                multiline={true}
-                style={s.messageInput}
-                value={message}
-                onChangeText={onChangeText}
-              />
-              <Touchable onPress={sendMessage}>
-                <Ionicons name="send" size={24} color={colors.primary} />
-              </Touchable>
-            </View>
-          ) : null}
         </View>
       </View>
     </ScrollView>
   );
 }
 
-export default ProductScreen;
+export default observer(ProductScreen);

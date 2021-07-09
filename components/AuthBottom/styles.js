@@ -3,16 +3,15 @@ import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
   bottomBlock: {
-    flex: 1,
     flexDirection: 'row',
     backgroundColor: colors.white,
     borderTopWidth: 1,
     borderTopColor: colors.grey,
     paddingHorizontal: 10,
     alignItems: 'center',
+    height: 76,
   },
   registerButton: {
-    padding: 5,
     backgroundColor: colors.primary,
 
     alignItems: 'center',
@@ -21,14 +20,10 @@ const styles = StyleSheet.create({
     flex: 1,
 
     paddingHorizontal: 5,
-    // height: 30,
-
-    // width: 30
   },
   registerText: {
     justifyContent: 'center',
     color: colors.primary,
-    // fontWeight; '900'
   },
 
   loginButton: {
@@ -41,11 +36,6 @@ const styles = StyleSheet.create({
   },
   loginContainer: {
     flex: 1,
-    // height: 30,
-    // width: 30,
-    paddingVertical: 10,
-    // paddingVertical: 50,
-    // paddingHorizontal: 100,
   },
   loginText: {
     justifyContent: 'center',

@@ -4,71 +4,35 @@ import { colors } from '../../styles';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
+    // justifyContent: 'flex-end',
+  },
+  containerInFormik: {
+    flex: 1,
     justifyContent: 'flex-end',
   },
-  inputsContainer: {
-    minHeight: '87%',
-  },
-  emailInput: {
+  input: {
     borderRadius: 5,
     borderWidth: 2,
     borderColor: colors.primary,
     height: 44,
     justifyContent: 'center',
     paddingHorizontal: 16,
+
+    // marginBottom: 10,
   },
-  emailBlock: {
-    marginHorizontal: 16,
-    marginTop: 20,
+  inputs: {
+    flex: 1,
+    padding: 10,
   },
-  fullNameInput: {
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: colors.primary,
-    height: 44,
-    justifyContent: 'center',
-    paddingHorizontal: 16,
-  },
-  fullNameBlock: {
-    marginHorizontal: 16,
-    marginTop: 20,
-  },
-  passwordInput: {
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: colors.primary,
-    height: 44,
-    justifyContent: 'center',
-    paddingHorizontal: 16,
-  },
-  passwordBlock: {
-    marginHorizontal: 16,
-    marginTop: 20,
-  },
+
   label: {
-    // position: 'absolute',
-    // left: 12,
-    // top: -10,
-    // backgroundColor: 'white',
     paddingHorizontal: 8,
     color: colors.primary,
+    marginTop: 10,
   },
-  registerButton: {
-    padding: 20,
-    backgroundColor: colors.primary,
-    borderRadius: 30,
-    alignItems: 'center',
-  },
-  containerButton: {
-    paddingVertical: 50,
-    paddingHorizontal: 100,
-  },
-  textButton: {
-    justifyContent: 'center',
-  },
-  forgotPasswardBlock: {
-    alignItems: 'flex-end',
-    padding: 10,
+
+  err: {
+    color: colors.red,
   },
 });
 

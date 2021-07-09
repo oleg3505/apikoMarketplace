@@ -14,4 +14,5 @@ export const screens = {
   Settings: 'Settings',
   WebView: 'WebView',
   Chat: 'Chat',
+  Init: 'Init',
 };

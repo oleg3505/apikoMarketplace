@@ -33,14 +33,16 @@ export const ChatStore = types
 
 function fetchChats() {
   return async function fetchChatsFlow(flow, store) {
+    flow.start();
     const res = await Api.Chats.getList();
 
     const result = flow.merge(res.data, ChatCollectionShema);
-    console.log(result);
+
     store.setItems(result);
     // console.log(store.items[0].id);
     // store.runInAction((self) => {
     //   self.items = result;
     // });
+    flow.success();
   };
 }

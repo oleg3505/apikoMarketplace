@@ -17,7 +17,7 @@ function getUser(id) {
     const res = await Api.Account.getUserById(id);
     store.add(res.data.id, {
       ...res.data,
-      owner: res.data.owner.id,
+      owner: res.data.owner,
     });
   };
 }

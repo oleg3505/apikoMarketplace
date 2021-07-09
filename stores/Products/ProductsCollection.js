@@ -17,8 +17,10 @@ export function useProductCollection() {
 function getProduct(id) {
   return async function getProductFlow(flow, store, Root) {
     const res = await Api.Products.getById(id);
-    // console.log(res.data);
+    console.log(res.data);
 
     flow.merge(res.data, Product);
+
+    console.log('store', Root.entities.users);
   };
 }

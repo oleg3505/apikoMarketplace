@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderBottomWidth: 2,
     borderColor: colors.borderGrey,
-    height: 48,
+    minHeight: 48,
   },
   ownerIdContainer: {
     padding: 10,

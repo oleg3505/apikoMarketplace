@@ -6,6 +6,7 @@ import {
   LoginScreen,
   MainScreen,
   RegisterScreen,
+  InitScreen,
 } from '../screens';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -16,10 +17,17 @@ import { screens } from './screens';
 
 const Stack = createStackNavigator();
 
-export function AppNavigation() {
+function AppNavigation(props, ref) {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={ref}>
       <Stack.Navigator mode="modal">
+        <Stack.Screen
+          name={screens.Init}
+          component={InitScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name={screens.Main}
           component={MainScreen}
@@ -67,3 +75,4 @@ export function AppNavigation() {
     </NavigationContainer>
   );
 }
+export default React.forwardRef(AppNavigation);

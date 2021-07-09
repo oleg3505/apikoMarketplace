@@ -31,10 +31,12 @@ export const MessageStore = types
 
 function fetchMessages() {
   return async function fetchMessagesFlow(flow, store) {
+    flow.start();
     const res = await Api.Chats.getMessages(store.chatId);
     const result = flow.merge(res.data, MessageCollectionSchema);
 
     store.setItems(result);
+    flow.success();
     // store.runInAction((self) => {
     //   self.items = result;
     // });

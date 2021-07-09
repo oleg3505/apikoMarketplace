@@ -9,10 +9,10 @@ import { useNavigation } from '@react-navigation/native';
 import { screens } from '../../navigation/screens';
 import { observer } from 'mobx-react';
 
-function UserInfo({ ownerId }) {
+function UserInfo({ item }) {
   return (
     <View>
-      <Text>{ownerId}</Text>
+      <Text>{item.fullName}</Text>
     </View>
   );
 }

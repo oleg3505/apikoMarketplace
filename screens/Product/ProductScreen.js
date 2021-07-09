@@ -25,26 +25,21 @@ function ProductScreen({ route }) {
   const { latestProducts, entities } = useStore();
 
   useEffect(() => {
-    entities.products.getProduct.run(item.id);
-    console.log('use', item);
+    console.log(item.photos);
+    console.log(item);
   }, []);
   function onPressCall() {
-    // Linking.openURL(`tel:${item.owner.phone}`);
+    Linking.openURL(`tel:${item.owner.phone}`);
     console.log(item);
   }
 
-  const [message, setMessage] = useState('');
-
   const nav = useNavigation();
   function onPressSendMessage() {
-    // setSending(true);
     nav.navigate(screens.Chat, {
       chatId: item.chatId,
       product: item,
     });
-    console.log(item);
   }
-  async function sendMessage() {}
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -53,7 +48,8 @@ function ProductScreen({ route }) {
           <Image
             style={s.imgContainer}
             source={{
-              uri: item.photos ? item.photos[0] : placeHolderImg,
+              uri:
+                item.photos && item.photos[0] ? item.photos[0] : placeHolderImg,
             }}
           />
         </View>
@@ -72,7 +68,7 @@ function ProductScreen({ route }) {
             <Text>{item.description}</Text>
           </View>
           <View style={s.ownerIdContainer}>
-            <UserInfo ownerId={item.ownerId} />
+            <UserInfo item={item.owner} />
           </View>
           <View style={s.buttonsContainer}>
             <Touchable style={s.callButton} onPress={onPressCall}>

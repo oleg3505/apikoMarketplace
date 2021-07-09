@@ -9,3 +9,4 @@ export { default as AddPostScreen } from './AddPost/AddPostScreen';
 export { default as FilterScreen } from './FilterScreen/FilterScreen';
 export { default as ProductScreen } from './Product/ProductScreen';
 export { default as Chat } from './Chat/Chat';
+export { default as InitScreen } from './InitScreen/InitScreen';

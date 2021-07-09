@@ -12,7 +12,7 @@ import { useStore } from '../../stores/CreateStore';
 
 export const Products = observer(({ item }) => {
   const nav = useNavigation();
-  const { savedProducts, viewer } = useStore();
+  const { savedProducts, viewer, entities } = useStore();
 
   async function onPressSaved() {
     if (viewer.userModel.id === item.ownerId) {
@@ -29,7 +29,8 @@ export const Products = observer(({ item }) => {
     }
   }
 
-  function goToProduct() {
+  async function goToProduct() {
+    await entities.products.getProduct.run(item.id);
     nav.navigate(screens.Product, {
       item: item,
     });
@@ -44,7 +45,8 @@ export const Products = observer(({ item }) => {
         <Image
           style={s.imgContainer}
           source={{
-            uri: item.photos ? item.photos[0] : placeHolderImg,
+            uri:
+              item.photos && item.photos[0] ? item.photos[0] : placeHolderImg,
           }}
         />
         <Text style={s.titleContainer}>{item.title}</Text>

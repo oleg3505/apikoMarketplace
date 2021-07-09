@@ -35,6 +35,8 @@ export const RootStore = types
         const res = await Api.Account.getUser(token);
         store.viewer.setViewer(res.data);
         store.auth.setIsLoggedIn(true);
+        const log = store.viewer.isLoggedIn;
+        return log;
       } catch (err) {
         alert(err);
       }

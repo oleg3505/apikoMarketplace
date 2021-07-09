@@ -36,18 +36,15 @@ function InboxScreen() {
     );
   }
   return (
-    <View style={s.mainContainer}>
-      {/* <AntDesign name="message1" size={68} color="black" />
-      <Text>No messages yet</Text> */}
-      <FlatList
-        style={{ flex: 1 }}
-        contentContainerStyle={{ flexGrow: 1 }}
-        refreshing={chats.fetch.isLoading}
-        data={chats.items}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item }) => <ChatItem item={item} />}
-      />
-    </View>
+    <FlatList
+      style={{ flex: 1 }}
+      contentContainerStyle={{ flexGrow: 1 }}
+      refreshing={chats.fetch.isLoading}
+      onRefresh={() => chats.fetch.run()}
+      data={chats.items}
+      keyExtractor={(item) => `${item.id}`}
+      renderItem={({ item }) => <ChatItem item={item} />}
+    />
   );
 }
 

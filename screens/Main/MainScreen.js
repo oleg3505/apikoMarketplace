@@ -20,11 +20,6 @@ function MainScreen() {
     nav.navigate(screens.GuestMode);
   }
 
-  const { viewer } = useStore();
-  if (!viewer.isLoggedIn) {
-    nav.navigate(screens.GuestMode);
-  }
-
   return (
     <View style={s.mainContainer}>
       <Touchable onPress={onPressRegister}>

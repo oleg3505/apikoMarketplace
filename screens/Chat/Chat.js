@@ -19,11 +19,6 @@ function Chat({ route }) {
   useEffect(() => {
     if (chat) {
       chats.getById(+chatId).messages.fetch.run();
-    } else {
-      chats.fetch.run();
-      // async function fetchChats() {
-      //   await chats.fetch.run();
-      // }
     }
   }, []);
 
@@ -53,6 +48,7 @@ function Chat({ route }) {
         style={{ flex: 1, padding: 10 }}
         contentContainerStyle={{ flexGrow: 1 }}
         inverted={true}
+        refreshing={chats.getById(+chatId).messages.fetch.isLoading}
         data={chat ? chat.messages.items : []}
         renderItem={({ item }) => <Message item={item} viewerId={viewerId} />}
       />

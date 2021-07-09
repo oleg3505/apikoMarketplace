@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React from 'react';
 import { View, Text } from 'react-native';
 import s from './styles';
@@ -13,4 +14,4 @@ function Message({ item, viewerId }) {
     </View>
   );
 }
-export default Message;
+export default observer(Message);

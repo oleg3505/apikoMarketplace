@@ -18,7 +18,7 @@ function ChatItem({ item }) {
   return (
     <Touchable style={s.chatContainer} onPress={onItemPress}>
       <Text>Chat id: {item.id}</Text>
-      <Text>User: {item.user.fullName}</Text>
+      <Text>User: {item.user?.fullName}</Text>
     </Touchable>
   );
 }

@@ -12,7 +12,7 @@ import { observer } from 'mobx-react';
 function UserInfo({ item }) {
   return (
     <View>
-      <Text>{item.fullName}</Text>
+      <Text>{item?.fullName}</Text>
     </View>
   );
 }

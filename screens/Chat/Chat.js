@@ -48,7 +48,6 @@ function Chat({ route }) {
         style={{ flex: 1, padding: 10 }}
         contentContainerStyle={{ flexGrow: 1 }}
         inverted={true}
-        refreshing={chats.getById(+chatId).messages.fetch.isLoading}
         data={chat ? chat.messages.items : []}
         renderItem={({ item }) => <Message item={item} viewerId={viewerId} />}
       />

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   chatContainer: {
     flex: 1,
     borderColor: colors.borderGrey,
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 7,
     margin: 5,
     marginHorizontal: 20,

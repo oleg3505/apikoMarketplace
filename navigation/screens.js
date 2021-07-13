@@ -5,7 +5,7 @@ export const screens = {
   Login: 'Login',
   Register: 'Register',
   GuestMode: 'GuestMode',
-  Brovse: 'Brovse',
+  Browse: 'Browse',
   Filter: 'Filter',
   Inbox: 'Inbox',
   Profile: 'Profile',

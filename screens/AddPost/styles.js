@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
   titleInput: {
     backgroundColor: colors.white,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: colors.borderGrey,
     borderRadius: 5,
     height: 44,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   descriptionInput: {
-    borderWidth: 2,
+    borderWidth: 1,
     backgroundColor: colors.white,
     borderColor: colors.borderGrey,
     borderRadius: 5,
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
 
   addPriceContainer: {
     backgroundColor: colors.white,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     borderColor: colors.borderGrey,
     justifyContent: 'center',
     padding: 20,

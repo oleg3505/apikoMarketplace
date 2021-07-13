@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 50,
     paddingHorizontal: 5,
-    borderTopWidth: 2,
+    borderTopWidth: 1,
     borderColor: colors.borderGrey,
   },
   messageInput: {

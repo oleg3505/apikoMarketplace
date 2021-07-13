@@ -68,7 +68,11 @@ function SettingsScreen() {
           <AntDesign name="right" size={24} color={colors.borderGrey} />
         </Touchable>
 
-        <Touchable onPress={onPressTerms} style={s.container}>
+        <Touchable
+          onPress={onPressTerms}
+          style={s.containerTerms}
+          style={s.container}
+        >
           <Text style={s.containerText}>Terms & Conditions</Text>
           <AntDesign name="right" size={24} color={colors.borderGrey} />
         </Touchable>
@@ -95,7 +99,11 @@ function SettingsScreen() {
         <AntDesign name="right" size={24} color={colors.borderGrey} />
       </Touchable>
 
-      <Touchable onPress={onPressTerms} style={s.container}>
+      <Touchable
+        onPress={onPressTerms}
+        style={s.containerTerms}
+        style={s.container}
+      >
         <Text style={s.containerText}>Terms & Conditions</Text>
         <AntDesign name="right" size={24} color={colors.borderGrey} />
       </Touchable>

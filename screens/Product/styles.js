@@ -30,19 +30,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingBottom: 10,
     borderColor: colors.borderGrey,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
   },
 
   descriptionContainer: {
     margin: 10,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     borderColor: colors.borderGrey,
     minHeight: 48,
   },
   ownerIdContainer: {
     padding: 10,
     height: 48,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     borderColor: colors.borderGrey,
   },
   buttonsContainer: {
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   messageInput: {
     borderColor: colors.primary,
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 5,
     minHeight: 40,
     maxHeight: 150,

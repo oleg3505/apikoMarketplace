@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   viewerContainer: {
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     borderBottomColor: colors.borderGrey,
     minHeight: '30%',
     width: '100%',

@@ -60,7 +60,7 @@ function AddPostScreen() {
     setPrice('');
     setDescription('');
     setLocation('');
-    nav.navigate(screens.Brovse);
+    nav.navigate(screens.Browse);
   }
 
   if (!viewer.isLoggedIn) {

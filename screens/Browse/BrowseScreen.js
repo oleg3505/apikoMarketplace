@@ -20,7 +20,7 @@ import { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import ProductsList from '../../components/ProductList/ProductsList';
 
-function BrovseScreen() {
+function BrowseScreen() {
   const store = useStore();
   useEffect(() => {
     store.latestProducts.fetchLatest.run();
@@ -47,4 +47,4 @@ function BrovseScreen() {
   );
 }
 
-export default observer(BrovseScreen);
+export default observer(BrowseScreen);

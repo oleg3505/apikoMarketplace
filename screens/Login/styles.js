@@ -4,7 +4,7 @@ import { colors } from '../../styles';
 const styles = StyleSheet.create({
   emailInput: {
     borderRadius: 5,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: colors.primary,
     height: 44,
     justifyContent: 'center',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     borderRadius: 5,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: colors.primary,
     height: 44,
     justifyContent: 'center',
@@ -35,10 +35,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   label: {
-    // position: 'absolute',
-    // left: 12,
-    // top: -10,
-    // backgroundColor: 'white',
     paddingHorizontal: 8,
     color: colors.primary,
   },

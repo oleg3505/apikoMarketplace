@@ -4,8 +4,8 @@ import { colors } from '../../../../styles';
 const styles = StyleSheet.create({
   addPhotosContainer: {
     backgroundColor: colors.white,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     borderColor: colors.borderGrey,
     alignItems: 'center',
     paddingVertical: 20,
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   addPhoto: {
     borderColor: colors.borderGrey,
     borderRadius: 4,
-    borderWidth: 2,
+    borderWidth: 1,
     width: 44,
     height: 44,
     alignItems: 'center',

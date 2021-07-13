@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: colors.borderGrey,
   },
   chooseTextActionSheet: {

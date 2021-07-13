@@ -8,7 +8,7 @@ import s from './styles';
 function ProductList({ style, store, ...props }) {
   return (
     <View style={s.mainContainer}>
-      <Text>Brovse Screen</Text>
+      <Text>Browse Screen</Text>
 
       <FlatList
         style={[s.content, { backgroundColor: 'red', flex: 1 }]}

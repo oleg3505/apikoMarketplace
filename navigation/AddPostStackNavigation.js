@@ -17,7 +17,7 @@ export function AddPostStackNavigation() {
   const nav = useNavigation();
 
   function closeAddPost() {
-    nav.navigate(screens.Brovse);
+    nav.navigate(screens.Browse);
   }
 
   return (

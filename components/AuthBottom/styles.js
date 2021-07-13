@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     justifyContent: 'center',
+    color: colors.white,
   },
 });
 export default styles;

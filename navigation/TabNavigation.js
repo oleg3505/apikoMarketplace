@@ -9,7 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { color } from 'react-native-reanimated';
 import s from './styles';
 import { SavedStackNavigation } from './SavedStackNavigation';
-import { BrovseStackNavigation } from './BrovseStackNavigation';
+import { BrowseStackNavigation } from './BrowseStackNavigation';
 import { InboxStackNavigation } from './InboxStackNavigation';
 import { ProfileStackNavigation } from './ProfileStackNavigation';
 import { colors } from '../styles';
@@ -25,10 +25,10 @@ export default function TabNavigation() {
       }}
     >
       <Tab.Screen
-        name={screens.Brovse}
+        name={screens.Browse}
         options={{
           tabBarLabel: (props) => (
-            <Text style={[props.focused ? s.active : s.inactive]}> Brovse</Text>
+            <Text style={[props.focused ? s.active : s.inactive]}> Browse</Text>
           ),
           tabBarIcon: (props) => (
             <AntDesign
@@ -38,7 +38,7 @@ export default function TabNavigation() {
             />
           ),
         }}
-        component={BrovseStackNavigation}
+        component={BrowseStackNavigation}
       />
       <Tab.Screen
         name={screens.Saved}

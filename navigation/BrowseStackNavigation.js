@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   AddPostScreen,
-  BrovseScreen,
+  BrowseScreen,
   FilterScreen,
   LoginScreen,
   MainScreen,
@@ -20,7 +20,7 @@ import { screens } from './screens';
 
 const Stack = createStackNavigator();
 
-export function BrovseStackNavigation() {
+export function BrowseStackNavigation() {
   // const nav = useNavigation();
   // function closeAddPost(){
   //     nav.navigate(
@@ -29,12 +29,12 @@ export function BrovseStackNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={screens.Brovse}
-        component={BrovseScreen}
+        name={screens.Browse}
+        component={BrowseScreen}
         options={{
           headerLeft: false,
           headerTitleAlign: 'center',
-          headerTitle: () => <SearchInput nameBack="Brovse" />,
+          headerTitle: () => <SearchInput nameBack="Browse" />,
         }}
       />
 
